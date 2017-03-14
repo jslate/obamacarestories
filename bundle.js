@@ -12200,34 +12200,33 @@ var MainPage = function (_React$Component) {
             'Obamacare: Share Your Real Story'
           ),
           _react2.default.createElement(
-            'p',
-            null,
-            'President Trump has asked you to share your story, with a survey clearly designed to get responses that serve his agenda. You can respond to it if you wish, but if you tell a story the administration doesn\'t like, I expect they will ignore it.'
-          ),
-          _react2.default.createElement(
-            'p',
-            null,
-            'Or, you can share your story here. I will compile the responses to provide an alternative story. Unlike with the White House\'s form, you can fill out as few or as many fields as you want. None are required. I promise not to share anything other than your state and your story. I might use the other information to get in touch with you if I have questions.'
-          ),
-          _react2.default.createElement(
-            'p',
-            null,
-            'I hope you can trust me with your information ',
+            'div',
+            { className: 'well' },
             _react2.default.createElement(
-              'em',
+              'p',
               null,
-              'at least'
+              'President Trump asked you to share your story with a survey designed to get responses that serve his agenda. You can respond to it if you wish, but if you don\'t tell the story they want, I expect they will ignore it.'
             ),
-            ' as much as you can trust Donald Trump.'
-          ),
-          _react2.default.createElement(
-            'p',
-            null,
-            '-',
             _react2.default.createElement(
-              'a',
-              { href: 'https://twitter.com/jslate' },
-              '@jslate'
+              'p',
+              null,
+              'Or, you can share your story here. I will compile the responses to provide an alternative story. Unlike with the White House\'s form, you can fill out as few or as many fields as you want. I will not anything other than your state and story. I might use the other information to get in touch with you if I have questions. I hope you can trust me with your information ',
+              _react2.default.createElement(
+                'em',
+                null,
+                'at least'
+              ),
+              ' as much as you can trust Donald Trump.'
+            ),
+            _react2.default.createElement(
+              'p',
+              null,
+              '-',
+              _react2.default.createElement(
+                'a',
+                { href: 'https://twitter.com/jslate' },
+                '@jslate'
+              )
             )
           ),
           _react2.default.createElement(
@@ -12244,111 +12243,115 @@ var MainPage = function (_React$Component) {
             'form',
             null,
             _react2.default.createElement(
-              'p',
-              null,
+              'div',
+              { className: 'form-group' },
               _react2.default.createElement(
-                'label',
+                'p',
                 null,
-                'SHARE YOUR STORY:',
-                _react2.default.createElement('br', null),
-                _react2.default.createElement('textarea', { onChange: function onChange(event) {
-                    return _this3.setState({ story: event.target.value });
-                  }, rows: '15', cols: '60' })
-              )
-            ),
-            _react2.default.createElement(
-              'p',
-              null,
-              _react2.default.createElement(
-                'label',
-                null,
-                'FIRST NAME:',
-                _react2.default.createElement('br', null),
-                _react2.default.createElement('input', { type: 'text', onChange: function onChange(event) {
-                    return _this3.setState({ firstName: event.target.value });
-                  } })
-              )
-            ),
-            _react2.default.createElement(
-              'p',
-              null,
-              _react2.default.createElement(
-                'label',
-                null,
-                'LAST NAME:',
-                _react2.default.createElement('br', null),
-                _react2.default.createElement('input', { type: 'text', onChange: function onChange(event) {
-                    return _this3.setState({ lastName: event.target.value });
-                  } })
-              )
-            ),
-            _react2.default.createElement(
-              'p',
-              null,
-              _react2.default.createElement(
-                'label',
-                null,
-                'EMAIL:',
-                _react2.default.createElement('br', null),
-                _react2.default.createElement('input', { type: 'text', onChange: function onChange(event) {
-                    return _this3.setState({ email: event.target.value });
-                  } })
-              )
-            ),
-            _react2.default.createElement(
-              'p',
-              null,
-              _react2.default.createElement(
-                'label',
-                null,
-                'STATE:',
-                _react2.default.createElement('br', null),
                 _react2.default.createElement(
-                  'select',
-                  { onChange: function onChange(event) {
-                      return _this3.setState({ us_state: event.target.value });
-                    } },
-                  this.renderStateOptions()
+                  'label',
+                  null,
+                  'SHARE YOUR STORY:',
+                  _react2.default.createElement('br', null),
+                  _react2.default.createElement('textarea', { className: 'form-control', onChange: function onChange(event) {
+                      return _this3.setState({ story: event.target.value });
+                    }, rows: '15', cols: '60' })
                 )
-              )
-            ),
-            _react2.default.createElement(
-              'p',
-              null,
+              ),
               _react2.default.createElement(
-                'label',
+                'p',
                 null,
-                'COUNTRY:',
-                _react2.default.createElement('br', null),
                 _react2.default.createElement(
-                  'select',
-                  { onChange: function onChange(event) {
-                      return _this3.setState({ country: event.target.value });
-                    } },
-                  this.renderCountryOptions()
+                  'label',
+                  null,
+                  'FIRST NAME:',
+                  _react2.default.createElement('br', null),
+                  _react2.default.createElement('input', { type: 'text', className: 'form-control', onChange: function onChange(event) {
+                      return _this3.setState({ firstName: event.target.value });
+                    } })
                 )
-              )
-            ),
-            _react2.default.createElement(
-              'p',
-              null,
+              ),
               _react2.default.createElement(
-                'label',
+                'p',
                 null,
-                'ZIP:',
-                _react2.default.createElement('br', null),
-                _react2.default.createElement('input', { type: 'text', onChange: function onChange(event) {
-                    return _this3.setState({ zip: event.target.value });
-                  } })
-              )
-            ),
-            _react2.default.createElement(
-              'p',
-              null,
+                _react2.default.createElement(
+                  'label',
+                  null,
+                  'LAST NAME:',
+                  _react2.default.createElement('br', null),
+                  _react2.default.createElement('input', { type: 'text', className: 'form-control', onChange: function onChange(event) {
+                      return _this3.setState({ lastName: event.target.value });
+                    } })
+                )
+              ),
               _react2.default.createElement(
-                'button',
-                { onClick: this.postToServer },
-                'SHARE MY STORY'
+                'p',
+                null,
+                _react2.default.createElement(
+                  'label',
+                  null,
+                  'EMAIL:',
+                  _react2.default.createElement('br', null),
+                  _react2.default.createElement('input', { type: 'text', className: 'form-control', onChange: function onChange(event) {
+                      return _this3.setState({ email: event.target.value });
+                    } })
+                )
+              ),
+              _react2.default.createElement(
+                'p',
+                null,
+                _react2.default.createElement(
+                  'label',
+                  null,
+                  'STATE:',
+                  _react2.default.createElement('br', null),
+                  _react2.default.createElement(
+                    'select',
+                    { className: 'form-control', onChange: function onChange(event) {
+                        return _this3.setState({ us_state: event.target.value });
+                      } },
+                    this.renderStateOptions()
+                  )
+                )
+              ),
+              _react2.default.createElement(
+                'p',
+                null,
+                _react2.default.createElement(
+                  'label',
+                  null,
+                  'COUNTRY:',
+                  _react2.default.createElement('br', null),
+                  _react2.default.createElement(
+                    'select',
+                    { className: 'form-control', onChange: function onChange(event) {
+                        return _this3.setState({ country: event.target.value });
+                      } },
+                    this.renderCountryOptions()
+                  )
+                )
+              ),
+              _react2.default.createElement(
+                'p',
+                null,
+                _react2.default.createElement(
+                  'label',
+                  null,
+                  'ZIP:',
+                  _react2.default.createElement('br', null),
+                  _react2.default.createElement('input', { type: 'text', className: 'form-control', onChange: function onChange(event) {
+                      return _this3.setState({ zip: event.target.value });
+                    } })
+                )
+              ),
+              _react2.default.createElement(
+                'p',
+                null,
+                _react2.default.createElement(
+                  'button',
+                  { className: 'btn btn-default btn-primary', onClick: this.postToServer },
+                  'SHARE MY STORY'
+                )
               )
             )
           )
@@ -13241,7 +13244,7 @@ exports = module.exports = __webpack_require__(117)();
 
 
 // module
-exports.push([module.i, "body {\n  font-family: sans-serif;\n  background-color: #FAFDFD; }\n\na {\n  text-decoration: none; }\n\nbutton {\n  box-shadow: inset 0px 1px 3px 0px #91b8b3;\n  background: linear-gradient(to bottom, #768d87 5%, #6c7c7c 100%);\n  background-color: #768d87;\n  border-radius: 5px;\n  border: 1px solid #566963;\n  display: inline-block;\n  cursor: pointer;\n  color: #ffffff;\n  font-family: Arial;\n  font-size: 15px;\n  font-weight: bold;\n  padding: 5px 15px;\n  margin: 20px 10px 40px 0;\n  text-decoration: none;\n  text-shadow: 0px -1px 0px #2b665e; }\n  button:hover {\n    background: linear-gradient(to bottom, #6c7c7c 5%, #768d87 100%);\n    background-color: #6c7c7c; }\n  button:active {\n    position: relative;\n    top: 1px; }\n\n.right {\n  float: right; }\n\n.block {\n  display: inline-block;\n  vertical-align: top; }\n\n.checkmark {\n  display: inline;\n  color: green;\n  font-size: 26px; }\n\n.checkmark-enter {\n  opacity: 0.01; }\n  .checkmark-enter.checkmark-enter-active {\n    opacity: 1;\n    transition: opacity 500ms ease-in; }\n\n.checkmark-leave {\n  opacity: 1; }\n  .checkmark-leave.checkmark-leave.checkmark-leave-active {\n    opacity: 0.01;\n    transition: opacity 300ms ease-in; }\n", ""]);
+exports.push([module.i, "a {\n  text-decoration: none; }\n", ""]);
 
 // exports
 

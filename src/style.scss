@@ -1,65 +1,39 @@
-body {
-  font-family: sans-serif;
-  background-color: #FAFDFD;
-}
-
+// body {
+//   font-family: sans-serif;
+//   background-color: #FAFDFD;
+// }
+//
 a {
   text-decoration: none;
 }
-
-button {
-  box-shadow:inset 0px 1px 3px 0px #91b8b3;
-  background:linear-gradient(to bottom, #768d87 5%, #6c7c7c 100%);
-  background-color:#768d87;
-  border-radius:5px;
-  border:1px solid #566963;
-  display:inline-block;
-  cursor:pointer;
-  color:#ffffff;
-  font-family:Arial;
-  font-size:15px;
-  font-weight:bold;
-  padding:5px 15px;
-  margin: 20px 10px 40px 0;
-  text-decoration:none;
-  text-shadow:0px -1px 0px #2b665e;
-  &:hover {
-    background:linear-gradient(to bottom, #6c7c7c 5%, #768d87 100%);
-    background-color:#6c7c7c;
-  }
-  &:active {
-    position:relative;
-    top:1px;
-  }
-}
-
-.right {
-  float: right;
-}
-
-.block {
-  display: inline-block;
-  vertical-align: top;
-}
-
-.checkmark {
-  display: inline;
-  color: green;
-  font-size: 26px;
-}
-
-.checkmark-enter {
-  opacity: 0.01;
-  &.checkmark-enter-active {
-    opacity: 1;
-    transition: opacity 500ms ease-in;
-  }
-}
-
-.checkmark-leave {
-  opacity: 1;
-  &.checkmark-leave.checkmark-leave-active {
-    opacity: 0.01;
-    transition: opacity 300ms ease-in;
-  }
-}
+//
+// .right {
+//   float: right;
+// }
+//
+// .block {
+//   display: inline-block;
+//   vertical-align: top;
+// }
+//
+// .checkmark {
+//   display: inline;
+//   color: green;
+//   font-size: 26px;
+// }
+//
+// .checkmark-enter {
+//   opacity: 0.01;
+//   &.checkmark-enter-active {
+//     opacity: 1;
+//     transition: opacity 500ms ease-in;
+//   }
+// }
+//
+// .checkmark-leave {
+//   opacity: 1;
+//   &.checkmark-leave.checkmark-leave-active {
+//     opacity: 0.01;
+//     transition: opacity 300ms ease-in;
+//   }
+// }

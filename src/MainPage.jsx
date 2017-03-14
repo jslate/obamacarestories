@@ -56,71 +56,74 @@ class MainPage extends React.Component {
     return (<div>
       <div className="block">
         <h1>Obamacare: Share Your Real Story</h1>
-        <p>President Trump has asked you to share your story, with a survey clearly designed to get responses
-        that serve his agenda. You can respond to it if you wish, but if you tell a story the administration doesn't like,
-        I expect they will ignore it.</p>
-        <p>Or, you can share your story here. I will compile the responses to provide an alternative story.
-        Unlike with the White House's form, you can fill out as few or as many fields as you want. None are required.
-        I promise not to share anything other than your state and your story. I might use the other information
-        to get in touch with you if I have questions.</p>
-        <p>I hope you can trust me with your information <em>at least</em> as much as you can trust Donald Trump.</p>
-        <p>-<a href="https://twitter.com/jslate">@jslate</a></p>
+        <div className="well">
+          <p>President Trump asked you to share your story with a survey designed to get responses
+          that serve his agenda. You can respond to it if you wish, but if you don't tell the story they want,
+          I expect they will ignore it.</p>
+          <p>Or, you can share your story here. I will compile the responses to provide an alternative story.
+          Unlike with the White House's form, you can fill out as few or as many fields as you want.
+          I will not anything other than your state and story. I might use the other information
+          to get in touch with you if I have questions. I hope you can trust me with your information <em>at least</em> as much as you can trust Donald Trump.</p>
+          <p>-<a href="https://twitter.com/jslate">@jslate</a></p>
+        </div>
 
         <p>&nbsp;</p>
 
         <h2>{this.state.donePost ? 'Thank you! Your story has been recorded' : ''}</h2>
 
         <form>
-          <p>
-            <label>
-              SHARE YOUR STORY:<br />
-              <textarea onChange={(event) => this.setState({story: event.target.value})} rows="15" cols="60"/>
-            </label>
-          </p>
-          <p>
-            <label>
-              FIRST NAME:<br />
-              <input type="text" onChange={(event) => this.setState({firstName: event.target.value})} />
-            </label>
-          </p>
-          <p>
-            <label>
-              LAST NAME:<br />
-              <input type="text" onChange={(event) => this.setState({lastName: event.target.value})} />
-            </label>
-          </p>
-          <p>
-            <label>
-              EMAIL:<br />
-              <input type="text" onChange={(event) => this.setState({email: event.target.value})} />
-            </label>
-          </p>
+          <div className="form-group">
+            <p>
+              <label>
+                SHARE YOUR STORY:<br />
+                <textarea className="form-control" onChange={(event) => this.setState({story: event.target.value})} rows="15" cols="60"/>
+              </label>
+            </p>
+            <p>
+              <label>
+                FIRST NAME:<br />
+                <input type="text" className="form-control" onChange={(event) => this.setState({firstName: event.target.value})} />
+              </label>
+            </p>
+            <p>
+              <label>
+                LAST NAME:<br />
+                <input type="text" className="form-control" onChange={(event) => this.setState({lastName: event.target.value})} />
+              </label>
+            </p>
+            <p>
+              <label>
+                EMAIL:<br />
+                <input type="text" className="form-control" onChange={(event) => this.setState({email: event.target.value})} />
+              </label>
+            </p>
 
-          <p>
-            <label>
-              STATE:<br />
-              <select onChange={(event) => this.setState({us_state: event.target.value})}>
-                {this.renderStateOptions()}
-              </select>
-            </label>
-          </p>
-          <p>
-            <label>
-              COUNTRY:<br />
-              <select onChange={(event) => this.setState({country: event.target.value})}>
-                {this.renderCountryOptions()}
-              </select>
-            </label>
-          </p>
-          <p>
-            <label>
-              ZIP:<br />
-              <input type="text" onChange={(event) => this.setState({zip: event.target.value})} />
-            </label>
-          </p>
-          <p>
-            <button onClick={this.postToServer}>SHARE MY STORY</button>
-          </p>
+            <p>
+              <label>
+                STATE:<br />
+                <select  className="form-control" onChange={(event) => this.setState({us_state: event.target.value})}>
+                  {this.renderStateOptions()}
+                </select>
+              </label>
+            </p>
+            <p>
+              <label>
+                COUNTRY:<br />
+                <select className="form-control" onChange={(event) => this.setState({country: event.target.value})}>
+                  {this.renderCountryOptions()}
+                </select>
+              </label>
+            </p>
+            <p>
+              <label>
+                ZIP:<br />
+                <input type="text" className="form-control" onChange={(event) => this.setState({zip: event.target.value})} />
+              </label>
+            </p>
+            <p>
+              <button className="btn btn-default btn-primary" onClick={this.postToServer}>SHARE MY STORY</button>
+            </p>
+          </div>
         </form>
       </div>
     </div>);
