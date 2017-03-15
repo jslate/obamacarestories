@@ -4,6 +4,25 @@ import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 import _ from 'lodash';
 import Home from './Home.jsx'
 
+import {
+  ShareButtons,
+  ShareCounts,
+  generateShareIcon
+} from 'react-share';
+
+const {
+  FacebookShareButton,
+  GooglePlusShareButton,
+  LinkedinShareButton,
+  TwitterShareButton,
+  TelegramShareButton,
+  WhatsappShareButton,
+  PinterestShareButton,
+  VKShareButton
+} = ShareButtons;
+
+const FacebookIcon = generateShareIcon('facebook');
+const TwitterIcon = generateShareIcon('twitter');
 
 class MainPage extends React.Component {
 
@@ -13,6 +32,8 @@ class MainPage extends React.Component {
     this.getNavClass = this.getNavClass.bind(this);
     this.renderPageContents = this.renderPageContents.bind(this);
     this.navTo = this.navTo.bind(this);
+
+
   }
 
   getNavClass() {
@@ -49,11 +70,6 @@ class MainPage extends React.Component {
     this.setState({navOpen: false, page: location});
   }
 
-  fbShare(event) {
-    event.preventDefault();
-    window.open("https://www.facebook.com/sharer/sharer.php?u=http://yourrealobamacarestory.life", "pop", "width=600, height=400, scrollbars=no");
-  }
-
   render() {
     return (
       <div>
@@ -85,9 +101,12 @@ class MainPage extends React.Component {
         <div className="container">
           {this.renderPageContents()}
           <div className="sharing">
-            <a href="#" onClick={this.fbShare}><img src="fb-logo.png" style={{width: 25}}/></a>
-            <a href="https://twitter.com/share" class="twitter-share-button" data-show-count="false">Tweet</a>
-            <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+            <FacebookShareButton url="http://yourrealobamacarestory.life">
+              <FacebookIcon round="true" size="40" />
+            </FacebookShareButton>
+            <TwitterShareButton url="http://yourrealobamacarestory.life" title="Share your real Obamacare story" hashtags={['RealObamaCareStory']}>
+              <TwitterIcon round="true" size="40" />
+            </TwitterShareButton>
           </div>
         </div>
       </div>);
