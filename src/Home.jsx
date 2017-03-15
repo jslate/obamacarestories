@@ -47,7 +47,7 @@ class Home extends React.Component {
   renderSuccess() {
     if (this.state.donePost) {
       return (<div className="alert alert-success" role="alert">
-        Thank you! Your story has been recorded.
+        Thank you! Your story has been recorded. Please consider sharing on social media using the buttons below.
       </div>);
     }
   }

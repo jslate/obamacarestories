@@ -32,8 +32,6 @@ class MainPage extends React.Component {
     this.getNavClass = this.getNavClass.bind(this);
     this.renderPageContents = this.renderPageContents.bind(this);
     this.navTo = this.navTo.bind(this);
-
-
   }
 
   getNavClass() {
