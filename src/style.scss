@@ -3,37 +3,13 @@
 //   background-color: #FAFDFD;
 // }
 //
+body {
+  padding-top: 80px;
+}
 a {
   text-decoration: none;
 }
-//
-// .right {
-//   float: right;
-// }
-//
-// .block {
-//   display: inline-block;
-//   vertical-align: top;
-// }
-//
-// .checkmark {
-//   display: inline;
-//   color: green;
-//   font-size: 26px;
-// }
-//
-// .checkmark-enter {
-//   opacity: 0.01;
-//   &.checkmark-enter-active {
-//     opacity: 1;
-//     transition: opacity 500ms ease-in;
-//   }
-// }
-//
-// .checkmark-leave {
-//   opacity: 1;
-//   &.checkmark-leave.checkmark-leave-active {
-//     opacity: 0.01;
-//     transition: opacity 300ms ease-in;
-//   }
-// }
+
+.sharing {
+  margin: 30px 0;
+}

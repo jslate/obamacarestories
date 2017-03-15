@@ -12094,9 +12094,9 @@ var _lodash = __webpack_require__(133);
 
 var _lodash2 = _interopRequireDefault(_lodash);
 
-var _axios = __webpack_require__(98);
+var _Home = __webpack_require__(224);
 
-var _axios2 = _interopRequireDefault(_axios);
+var _Home2 = _interopRequireDefault(_Home);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -12112,248 +12112,169 @@ var MainPage = function (_React$Component) {
   function MainPage(props) {
     _classCallCheck(this, MainPage);
 
-    var _this2 = _possibleConstructorReturn(this, (MainPage.__proto__ || Object.getPrototypeOf(MainPage)).call(this, props));
+    var _this = _possibleConstructorReturn(this, (MainPage.__proto__ || Object.getPrototypeOf(MainPage)).call(this, props));
 
-    _this2.state = {};
-    _this2.handleChange = _this2.handleChange.bind(_this2);
-    _this2.postToServer = _this2.postToServer.bind(_this2);
-    _this2.apiURL = 'https://sgx2yfm8xf.execute-api.us-east-1.amazonaws.com/prod/feelings';
-    _this2.countries = ["United States", "Afghanistan", "Aland Islands", "Albania", "Algeria", "American Samoa", "Andorra", "Angola", "Anguilla", "Antarctica", "Antigua and Barbuda", "Argentina", "Armenia", "Aruba", "Australia", "Austria", "Azerbaijan", "Bahamas", "Bahrain", "Bangladesh", "Barbados", "Belarus", "Belgium", "Belize", "Benin", "Bermuda", "Bhutan", "Bolivia", "Bonaire, Saint Eustatius and Saba ", "Bosnia and Herzegovina", "Botswana", "Bouvet Island", "Brazil", "British Indian Ocean Territory", "British Virgin Islands", "Brunei", "Bulgaria", "Burkina Faso", "Burundi", "Cambodia", "Cameroon", "Canada", "Cape Verde", "Cayman Islands", "Central African Republic", "Chad", "Chile", "China", "Christmas Island", "Cocos Islands", "Colombia", "Comoros", "Cook Islands", "Costa Rica", "Croatia", "Cuba", "Curacao", "Cyprus", "Czech Republic", "Democratic Republic of the Congo", "Denmark", "Djibouti", "Dominica", "Dominican Republic", "East Timor", "Ecuador", "Egypt", "El Salvador", "Equatorial Guinea", "Eritrea", "Estonia", "Ethiopia", "Falkland Islands", "Faroe Islands", "Fiji", "Finland", "France", "French Guiana", "French Polynesia", "French Southern Territories", "Gabon", "Gambia", "Georgia", "Germany", "Ghana", "Gibraltar", "Greece", "Greenland", "Grenada", "Guadeloupe", "Guam", "Guatemala", "Guernsey", "Guinea", "Guinea-Bissau", "Guyana", "Haiti", "Heard Island and McDonald Islands", "Honduras", "Hong Kong", "Hungary", "Iceland", "India", "Indonesia", "Iran", "Iraq", "Ireland", "Isle of Man", "Israel", "Italy", "Ivory Coast", "Jamaica", "Japan", "Jersey", "Jordan", "Kazakhstan", "Kenya", "Kiribati", "Kosovo", "Kuwait", "Kyrgyzstan", "Laos", "Latvia", "Lebanon", "Lesotho", "Liberia", "Libya", "Liechtenstein", "Lithuania", "Luxembourg", "Macao", "Macedonia", "Madagascar", "Malawi", "Malaysia", "Maldives", "Mali", "Malta", "Marshall Islands", "Martinique", "Mauritania", "Mauritius", "Mayotte", "Mexico", "Micronesia", "Moldova", "Monaco", "Mongolia", "Montenegro", "Montserrat", "Morocco", "Mozambique", "Myanmar", "Namibia", "Nauru", "Nepal", "Netherlands", "New Caledonia", "New Zealand", "Nicaragua", "Niger", "Nigeria", "Niue", "Norfolk Island", "North Korea", "Northern Mariana Islands", "Norway", "Oman", "Pakistan", "Palau", "Palestinian Territory", "Panama", "Papua New Guinea", "Paraguay", "Peru", "Philippines", "Pitcairn", "Poland", "Portugal", "Puerto Rico", "Qatar", "Republic of the Congo", "Reunion", "Romania", "Russia", "Rwanda", "Saint Barthelemy", "Saint Helena", "Saint Kitts and Nevis", "Saint Lucia", "Saint Martin", "Saint Pierre and Miquelon", "Saint Vincent and the Grenadines", "Samoa", "San Marino", "Sao Tome and Principe", "Saudi Arabia", "Senegal", "Serbia", "Seychelles", "Sierra Leone", "Singapore", "Sint Maarten", "Slovakia", "Slovenia", "Solomon Islands", "Somalia", "South Africa", "South Georgia and the South Sandwich Islands", "South Korea", "South Sudan", "Spain", "Sri Lanka", "Sudan", "Suriname", "Svalbard and Jan Mayen", "Swaziland", "Sweden", "Switzerland", "Syria", "Taiwan", "Tajikistan", "Tanzania", "Thailand", "Togo", "Tokelau", "Tonga", "Trinidad and Tobago", "Tunisia", "Turkey", "Turkmenistan", "Turks and Caicos Islands", "Tuvalu", "U.S. Virgin Islands", "Uganda", "Ukraine", "United Arab Emirates", "United Kingdom", "United States Minor Outlying Islands", "Uruguay", "Uzbekistan", "Vanuatu", "Vatican", "Venezuela", "Vietnam", "Wallis and Futuna", "Western Sahara", "Yemen", "Zambia", "Zimbabwe"];
-    _this2.states = ['Alabama', 'Alaska', 'American Samoa', 'Arizona', 'Arkansas', 'California', 'Colorado', 'Connecticut', 'Delaware', 'District of Columbia', 'Federated States of Micronesia', 'Florida', 'Georgia', 'Guam', 'Hawaii', 'Idaho', 'Illinois', 'Indiana', 'Iowa', 'Kansas', 'Kentucky', 'Louisiana', 'Maine', 'Marshall Islands', 'Maryland', 'Massachusetts', 'Michigan', 'Minnesota', 'Mississippi', 'Missouri', 'Montana', 'Nebraska', 'Nevada', 'New Hampshire', 'New Jersey', 'New Mexico', 'New York', 'North Carolina', 'North Dakota', 'Northern Mariana Islands', 'Ohio', 'Oklahoma', 'Oregon', 'Palau', 'Pennsylvania', 'Puerto Rico', 'Rhode Island', 'South Carolina', 'South Dakota', 'Tennessee', 'Texas', 'Utah', 'Vermont', 'Virgin Island', 'Virginia', 'Washington', 'West Virginia', 'Wisconsin', 'Wyoming'];
-    return _this2;
+    _this.state = { page: 'home' };
+    _this.getNavClass = _this.getNavClass.bind(_this);
+    _this.renderPageContents = _this.renderPageContents.bind(_this);
+    _this.navTo = _this.navTo.bind(_this);
+    return _this;
   }
 
   _createClass(MainPage, [{
-    key: 'handleChange',
-    value: function handleChange(type, event) {
-      var obj = {};
-      obj[type] = parseInt(event.target.value);
-      this.setState({ variableProperties: _lodash2.default.merge(this.state.variableProperties, obj) });
+    key: 'getNavClass',
+    value: function getNavClass() {
+      if (this.state.navOpen) {
+        return 'navbar-collapse';
+      } else {
+        return 'navbar-collapse collapse';
+      }
     }
   }, {
-    key: 'handleSelectChange',
-    value: function handleSelectChange(event) {
-      this.setState({
-        variableProperties: _lodash2.default.find(this.state.items, function (item) {
-          return item.date == event.target.value;
-        }).values,
-        selectedItem: parseInt(event.target.value) });
+    key: 'renderAbout',
+    value: function renderAbout() {
+      return _react2.default.createElement(
+        'div',
+        { className: 'well' },
+        _react2.default.createElement(
+          'p',
+          null,
+          'The White House has asked people to share their stories about Obamacare with a survey clearly designed to get responses that serve their agenda. You can respond to it if you wish, but if you don\'t tell the story they want to hear, we expect they will ignore it.'
+        ),
+        _react2.default.createElement(
+          'p',
+          null,
+          'We decided to provide this site to give people another place to share their stories about Obamacare. We will compile the responses to provide an alternative story to the one being told by The White House.'
+        ),
+        _react2.default.createElement(
+          'p',
+          null,
+          'Author: Jonathan Slate (',
+          _react2.default.createElement(
+            'a',
+            { href: 'https://twitter.com/jslate' },
+            '@jslate'
+          ),
+          ')'
+        )
+      );
     }
   }, {
-    key: 'postToServer',
-    value: function postToServer(event) {
+    key: 'renderPageContents',
+    value: function renderPageContents() {
+      if (this.state.page == 'home') {
+        return _react2.default.createElement(_Home2.default, null);
+      } else {
+        return this.renderAbout();
+      }
+    }
+  }, {
+    key: 'navTo',
+    value: function navTo(event, location) {
       event.preventDefault();
-      var _this = this;
-      var params = {
-        Item: {
-          firstName: this.state.firstName,
-          lastName: this.state.lastName,
-          story: this.state.story,
-          email: this.state.email,
-          state: this.state.state,
-          country: this.state.country,
-          zip: this.state.zip,
-          date_plus: Date.now() * 1000 + Math.floor(Math.random() * 1000)
-        },
-        TableName: 'shareYourRealStory'
-      };
-      _axios2.default.post(this.apiURL, params).then(function (response) {
-        _this.setState({ donePost: true });
-      });
+      this.setState({ navOpen: false, page: location });
     }
   }, {
-    key: 'renderStateOptions',
-    value: function renderStateOptions() {
-      return this.states.map(function (state) {
-        return _react2.default.createElement(
-          'option',
-          { key: state },
-          state
-        );
-      });
-    }
-  }, {
-    key: 'renderCountryOptions',
-    value: function renderCountryOptions() {
-      return this.countries.map(function (country) {
-        return _react2.default.createElement(
-          'option',
-          { key: country },
-          country
-        );
-      });
+    key: 'fbShare',
+    value: function fbShare(event) {
+      event.preventDefault();
+      window.open("https://www.facebook.com/sharer/sharer.php?u=http://yourrealobamacarestory.life", "pop", "width=600, height=400, scrollbars=no");
     }
   }, {
     key: 'render',
     value: function render() {
-      var _this3 = this;
+      var _this2 = this;
 
       return _react2.default.createElement(
         'div',
         null,
         _react2.default.createElement(
-          'div',
-          { className: 'block' },
-          _react2.default.createElement(
-            'h1',
-            null,
-            'Obamacare: Share Your Real Story'
-          ),
+          'nav',
+          { className: 'navbar navbar-inverse navbar-fixed-top' },
           _react2.default.createElement(
             'div',
-            { className: 'well' },
-            _react2.default.createElement(
-              'p',
-              null,
-              'President Trump asked you to share your story with a survey designed to get responses that serve his agenda. You can respond to it if you wish, but if you don\'t tell the story they want, I expect they will ignore it.'
-            ),
-            _react2.default.createElement(
-              'p',
-              null,
-              'Or, you can share your story here. I will compile the responses to provide an alternative story. Unlike with the White House\'s form, you can fill out as few or as many fields as you want. I will not anything other than your state and story. I might use the other information to get in touch with you if I have questions. I hope you can trust me with your information ',
-              _react2.default.createElement(
-                'em',
-                null,
-                'at least'
-              ),
-              ' as much as you can trust Donald Trump.'
-            ),
-            _react2.default.createElement(
-              'p',
-              null,
-              '-',
-              _react2.default.createElement(
-                'a',
-                { href: 'https://twitter.com/jslate' },
-                '@jslate'
-              )
-            )
-          ),
-          _react2.default.createElement(
-            'p',
-            null,
-            '\xA0'
-          ),
-          _react2.default.createElement(
-            'h2',
-            null,
-            this.state.donePost ? 'Thank you! Your story has been recorded' : ''
-          ),
-          _react2.default.createElement(
-            'form',
-            null,
+            { className: 'container' },
             _react2.default.createElement(
               'div',
-              { className: 'form-group' },
+              { className: 'navbar-header' },
               _react2.default.createElement(
-                'p',
-                null,
+                'button',
+                { type: 'button',
+                  className: 'navbar-toggle collapsed',
+                  'data-toggle': 'collapse',
+                  'data-target': '#navbar',
+                  'aria-expanded': 'false',
+                  'aria-controls': 'navbar',
+                  onClick: function onClick() {
+                    return _this2.setState({ navOpen: !_this2.state.navOpen });
+                  } },
                 _react2.default.createElement(
-                  'label',
-                  null,
-                  'SHARE YOUR STORY:',
-                  _react2.default.createElement('br', null),
-                  _react2.default.createElement('textarea', { className: 'form-control', onChange: function onChange(event) {
-                      return _this3.setState({ story: event.target.value });
-                    }, rows: '15', cols: '60' })
-                )
+                  'span',
+                  { className: 'sr-only' },
+                  'Toggle navigation'
+                ),
+                _react2.default.createElement('span', { className: 'icon-bar' }),
+                _react2.default.createElement('span', { className: 'icon-bar' }),
+                _react2.default.createElement('span', { className: 'icon-bar' })
               ),
               _react2.default.createElement(
-                'p',
-                null,
-                _react2.default.createElement(
-                  'label',
-                  null,
-                  'FIRST NAME:',
-                  _react2.default.createElement('br', null),
-                  _react2.default.createElement('input', { type: 'text', className: 'form-control', onChange: function onChange(event) {
-                      return _this3.setState({ firstName: event.target.value });
-                    } })
-                )
-              ),
+                'a',
+                { className: 'navbar-brand', href: '#', onClick: function onClick(event) {
+                    return _this2.navTo(event, 'home');
+                  } },
+                'Obamacare: Share Your Real Story'
+              )
+            ),
+            _react2.default.createElement(
+              'div',
+              { id: 'navbar', className: this.getNavClass() },
               _react2.default.createElement(
-                'p',
-                null,
+                'ul',
+                { className: 'nav navbar-nav' },
                 _react2.default.createElement(
-                  'label',
-                  null,
-                  'LAST NAME:',
-                  _react2.default.createElement('br', null),
-                  _react2.default.createElement('input', { type: 'text', className: 'form-control', onChange: function onChange(event) {
-                      return _this3.setState({ lastName: event.target.value });
-                    } })
-                )
-              ),
-              _react2.default.createElement(
-                'p',
-                null,
-                _react2.default.createElement(
-                  'label',
-                  null,
-                  'EMAIL:',
-                  _react2.default.createElement('br', null),
-                  _react2.default.createElement('input', { type: 'text', className: 'form-control', onChange: function onChange(event) {
-                      return _this3.setState({ email: event.target.value });
-                    } })
-                )
-              ),
-              _react2.default.createElement(
-                'p',
-                null,
-                _react2.default.createElement(
-                  'label',
-                  null,
-                  'STATE:',
-                  _react2.default.createElement('br', null),
+                  'li',
+                  { className: this.state.page == 'home' ? 'active' : '' },
                   _react2.default.createElement(
-                    'select',
-                    { className: 'form-control', onChange: function onChange(event) {
-                        return _this3.setState({ us_state: event.target.value });
+                    'a',
+                    { href: '#', onClick: function onClick(event) {
+                        return _this2.navTo(event, 'home');
                       } },
-                    this.renderStateOptions()
+                    'Home'
                   )
-                )
-              ),
-              _react2.default.createElement(
-                'p',
-                null,
+                ),
                 _react2.default.createElement(
-                  'label',
-                  null,
-                  'COUNTRY:',
-                  _react2.default.createElement('br', null),
+                  'li',
+                  { className: this.state.page == 'about' ? 'active' : '' },
                   _react2.default.createElement(
-                    'select',
-                    { className: 'form-control', onChange: function onChange(event) {
-                        return _this3.setState({ country: event.target.value });
+                    'a',
+                    { href: '#', onClick: function onClick(event) {
+                        return _this2.navTo(event, 'about');
                       } },
-                    this.renderCountryOptions()
+                    'About'
                   )
-                )
-              ),
-              _react2.default.createElement(
-                'p',
-                null,
-                _react2.default.createElement(
-                  'label',
-                  null,
-                  'ZIP:',
-                  _react2.default.createElement('br', null),
-                  _react2.default.createElement('input', { type: 'text', className: 'form-control', onChange: function onChange(event) {
-                      return _this3.setState({ zip: event.target.value });
-                    } })
-                )
-              ),
-              _react2.default.createElement(
-                'p',
-                null,
-                _react2.default.createElement(
-                  'button',
-                  { className: 'btn btn-default btn-primary', onClick: this.postToServer },
-                  'SHARE MY STORY'
                 )
               )
             )
+          )
+        ),
+        _react2.default.createElement(
+          'div',
+          { className: 'container' },
+          this.renderPageContents(),
+          _react2.default.createElement(
+            'div',
+            { className: 'sharing' },
+            _react2.default.createElement(
+              'a',
+              { href: '#', onClick: this.fbShare },
+              _react2.default.createElement('img', { src: 'fb-logo.png', style: { width: 25 } })
+            ),
+            _react2.default.createElement(
+              'a',
+              { href: 'https://twitter.com/share', 'class': 'twitter-share-button', 'data-show-count': 'false' },
+              'Tweet'
+            ),
+            _react2.default.createElement('script', { async: true, src: '//platform.twitter.com/widgets.js', charset: 'utf-8' })
           )
         )
       );
@@ -12363,7 +12284,7 @@ var MainPage = function (_React$Component) {
   return MainPage;
 }(_react2.default.Component);
 
-var componentElement = document.getElementById('container');
+var componentElement = document.getElementById('outer-container');
 if (componentElement) {
   _reactDom2.default.render(_react2.default.createElement(MainPage, null), componentElement);
 }
@@ -13244,7 +13165,7 @@ exports = module.exports = __webpack_require__(117)();
 
 
 // module
-exports.push([module.i, "a {\n  text-decoration: none; }\n", ""]);
+exports.push([module.i, "body {\n  padding-top: 80px; }\n\na {\n  text-decoration: none; }\n\n.sharing {\n  margin: 30px 0; }\n", ""]);
 
 // exports
 
@@ -43122,6 +43043,276 @@ var _MainPage2 = _interopRequireDefault(_MainPage);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 __webpack_require__(97);
+
+/***/ }),
+/* 224 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(219);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactDom = __webpack_require__(135);
+
+var _reactDom2 = _interopRequireDefault(_reactDom);
+
+var _reactAddonsCssTransitionGroup = __webpack_require__(134);
+
+var _reactAddonsCssTransitionGroup2 = _interopRequireDefault(_reactAddonsCssTransitionGroup);
+
+var _axios = __webpack_require__(98);
+
+var _axios2 = _interopRequireDefault(_axios);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var Home = function (_React$Component) {
+  _inherits(Home, _React$Component);
+
+  function Home(props) {
+    _classCallCheck(this, Home);
+
+    var _this2 = _possibleConstructorReturn(this, (Home.__proto__ || Object.getPrototypeOf(Home)).call(this, props));
+
+    _this2.state = { donePost: false };
+    _this2.postToServer = _this2.postToServer.bind(_this2);
+    _this2.renderSuccess = _this2.renderSuccess.bind(_this2);
+    _this2.renderForm = _this2.renderForm.bind(_this2);
+    _this2.renderPageContents = _this2.renderPageContents.bind(_this2);
+
+    _this2.apiURL = 'https://sgx2yfm8xf.execute-api.us-east-1.amazonaws.com/prod/feelings';
+    _this2.countries = ["United States", "Afghanistan", "Aland Islands", "Albania", "Algeria", "American Samoa", "Andorra", "Angola", "Anguilla", "Antarctica", "Antigua and Barbuda", "Argentina", "Armenia", "Aruba", "Australia", "Austria", "Azerbaijan", "Bahamas", "Bahrain", "Bangladesh", "Barbados", "Belarus", "Belgium", "Belize", "Benin", "Bermuda", "Bhutan", "Bolivia", "Bonaire, Saint Eustatius and Saba ", "Bosnia and Herzegovina", "Botswana", "Bouvet Island", "Brazil", "British Indian Ocean Territory", "British Virgin Islands", "Brunei", "Bulgaria", "Burkina Faso", "Burundi", "Cambodia", "Cameroon", "Canada", "Cape Verde", "Cayman Islands", "Central African Republic", "Chad", "Chile", "China", "Christmas Island", "Cocos Islands", "Colombia", "Comoros", "Cook Islands", "Costa Rica", "Croatia", "Cuba", "Curacao", "Cyprus", "Czech Republic", "Democratic Republic of the Congo", "Denmark", "Djibouti", "Dominica", "Dominican Republic", "East Timor", "Ecuador", "Egypt", "El Salvador", "Equatorial Guinea", "Eritrea", "Estonia", "Ethiopia", "Falkland Islands", "Faroe Islands", "Fiji", "Finland", "France", "French Guiana", "French Polynesia", "French Southern Territories", "Gabon", "Gambia", "Georgia", "Germany", "Ghana", "Gibraltar", "Greece", "Greenland", "Grenada", "Guadeloupe", "Guam", "Guatemala", "Guernsey", "Guinea", "Guinea-Bissau", "Guyana", "Haiti", "Heard Island and McDonald Islands", "Honduras", "Hong Kong", "Hungary", "Iceland", "India", "Indonesia", "Iran", "Iraq", "Ireland", "Isle of Man", "Israel", "Italy", "Ivory Coast", "Jamaica", "Japan", "Jersey", "Jordan", "Kazakhstan", "Kenya", "Kiribati", "Kosovo", "Kuwait", "Kyrgyzstan", "Laos", "Latvia", "Lebanon", "Lesotho", "Liberia", "Libya", "Liechtenstein", "Lithuania", "Luxembourg", "Macao", "Macedonia", "Madagascar", "Malawi", "Malaysia", "Maldives", "Mali", "Malta", "Marshall Islands", "Martinique", "Mauritania", "Mauritius", "Mayotte", "Mexico", "Micronesia", "Moldova", "Monaco", "Mongolia", "Montenegro", "Montserrat", "Morocco", "Mozambique", "Myanmar", "Namibia", "Nauru", "Nepal", "Netherlands", "New Caledonia", "New Zealand", "Nicaragua", "Niger", "Nigeria", "Niue", "Norfolk Island", "North Korea", "Northern Mariana Islands", "Norway", "Oman", "Pakistan", "Palau", "Palestinian Territory", "Panama", "Papua New Guinea", "Paraguay", "Peru", "Philippines", "Pitcairn", "Poland", "Portugal", "Puerto Rico", "Qatar", "Republic of the Congo", "Reunion", "Romania", "Russia", "Rwanda", "Saint Barthelemy", "Saint Helena", "Saint Kitts and Nevis", "Saint Lucia", "Saint Martin", "Saint Pierre and Miquelon", "Saint Vincent and the Grenadines", "Samoa", "San Marino", "Sao Tome and Principe", "Saudi Arabia", "Senegal", "Serbia", "Seychelles", "Sierra Leone", "Singapore", "Sint Maarten", "Slovakia", "Slovenia", "Solomon Islands", "Somalia", "South Africa", "South Georgia and the South Sandwich Islands", "South Korea", "South Sudan", "Spain", "Sri Lanka", "Sudan", "Suriname", "Svalbard and Jan Mayen", "Swaziland", "Sweden", "Switzerland", "Syria", "Taiwan", "Tajikistan", "Tanzania", "Thailand", "Togo", "Tokelau", "Tonga", "Trinidad and Tobago", "Tunisia", "Turkey", "Turkmenistan", "Turks and Caicos Islands", "Tuvalu", "U.S. Virgin Islands", "Uganda", "Ukraine", "United Arab Emirates", "United Kingdom", "United States Minor Outlying Islands", "Uruguay", "Uzbekistan", "Vanuatu", "Vatican", "Venezuela", "Vietnam", "Wallis and Futuna", "Western Sahara", "Yemen", "Zambia", "Zimbabwe"];
+    _this2.states = ['Alabama', 'Alaska', 'American Samoa', 'Arizona', 'Arkansas', 'California', 'Colorado', 'Connecticut', 'Delaware', 'District of Columbia', 'Federated States of Micronesia', 'Florida', 'Georgia', 'Guam', 'Hawaii', 'Idaho', 'Illinois', 'Indiana', 'Iowa', 'Kansas', 'Kentucky', 'Louisiana', 'Maine', 'Marshall Islands', 'Maryland', 'Massachusetts', 'Michigan', 'Minnesota', 'Mississippi', 'Missouri', 'Montana', 'Nebraska', 'Nevada', 'New Hampshire', 'New Jersey', 'New Mexico', 'New York', 'North Carolina', 'North Dakota', 'Northern Mariana Islands', 'Ohio', 'Oklahoma', 'Oregon', 'Palau', 'Pennsylvania', 'Puerto Rico', 'Rhode Island', 'South Carolina', 'South Dakota', 'Tennessee', 'Texas', 'Utah', 'Vermont', 'Virgin Island', 'Virginia', 'Washington', 'West Virginia', 'Wisconsin', 'Wyoming'];
+
+    return _this2;
+  }
+
+  _createClass(Home, [{
+    key: 'postToServer',
+    value: function postToServer(event) {
+      event.preventDefault();
+      this.setState({ posting: true });
+      var _this = this;
+      var params = {
+        Item: {
+          firstName: this.state.firstName,
+          lastName: this.state.lastName,
+          story: this.state.story,
+          email: this.state.email,
+          state: this.state.state,
+          country: this.state.country,
+          zip: this.state.zip,
+          date_plus: Date.now() * 1000 + Math.floor(Math.random() * 1000)
+        },
+        TableName: 'shareYourRealStory'
+      };
+      _axios2.default.post(this.apiURL, params).then(function (response) {
+        _this.setState({ donePost: true, posting: false });
+      });
+    }
+  }, {
+    key: 'renderStateOptions',
+    value: function renderStateOptions() {
+      return this.states.map(function (state) {
+        return _react2.default.createElement(
+          'option',
+          { key: state },
+          state
+        );
+      });
+    }
+  }, {
+    key: 'renderCountryOptions',
+    value: function renderCountryOptions() {
+      return this.countries.map(function (country) {
+        return _react2.default.createElement(
+          'option',
+          { key: country },
+          country
+        );
+      });
+    }
+  }, {
+    key: 'renderSuccess',
+    value: function renderSuccess() {
+      if (this.state.donePost) {
+        return _react2.default.createElement(
+          'div',
+          { className: 'alert alert-success', role: 'alert' },
+          'Thank you! Your story has been recorded.'
+        );
+      }
+    }
+  }, {
+    key: 'renderForm',
+    value: function renderForm() {
+      var _this3 = this;
+
+      return _react2.default.createElement(
+        'form',
+        null,
+        _react2.default.createElement(
+          'div',
+          { className: 'form-group' },
+          _react2.default.createElement(
+            'p',
+            null,
+            _react2.default.createElement(
+              'label',
+              null,
+              'SHARE YOUR STORY:',
+              _react2.default.createElement('br', null),
+              _react2.default.createElement('textarea', { className: 'form-control', onChange: function onChange(event) {
+                  return _this3.setState({ story: event.target.value });
+                }, rows: '15', cols: '60' })
+            )
+          ),
+          _react2.default.createElement(
+            'p',
+            null,
+            _react2.default.createElement(
+              'label',
+              null,
+              'FIRST NAME:',
+              _react2.default.createElement('br', null),
+              _react2.default.createElement('input', { type: 'text', className: 'form-control', onChange: function onChange(event) {
+                  return _this3.setState({ firstName: event.target.value });
+                } })
+            )
+          ),
+          _react2.default.createElement(
+            'p',
+            null,
+            _react2.default.createElement(
+              'label',
+              null,
+              'LAST NAME:',
+              _react2.default.createElement('br', null),
+              _react2.default.createElement('input', { type: 'text', className: 'form-control', onChange: function onChange(event) {
+                  return _this3.setState({ lastName: event.target.value });
+                } })
+            )
+          ),
+          _react2.default.createElement(
+            'p',
+            null,
+            _react2.default.createElement(
+              'label',
+              null,
+              'EMAIL:',
+              _react2.default.createElement('br', null),
+              _react2.default.createElement('input', { type: 'text', className: 'form-control', onChange: function onChange(event) {
+                  return _this3.setState({ email: event.target.value });
+                } })
+            )
+          ),
+          _react2.default.createElement(
+            'p',
+            null,
+            _react2.default.createElement(
+              'label',
+              null,
+              'STATE:',
+              _react2.default.createElement('br', null),
+              _react2.default.createElement(
+                'select',
+                { className: 'form-control', onChange: function onChange(event) {
+                    return _this3.setState({ us_state: event.target.value });
+                  } },
+                this.renderStateOptions()
+              )
+            )
+          ),
+          _react2.default.createElement(
+            'p',
+            null,
+            _react2.default.createElement(
+              'label',
+              null,
+              'COUNTRY:',
+              _react2.default.createElement('br', null),
+              _react2.default.createElement(
+                'select',
+                { className: 'form-control', onChange: function onChange(event) {
+                    return _this3.setState({ country: event.target.value });
+                  } },
+                this.renderCountryOptions()
+              )
+            )
+          ),
+          _react2.default.createElement(
+            'p',
+            null,
+            _react2.default.createElement(
+              'label',
+              null,
+              'ZIP:',
+              _react2.default.createElement('br', null),
+              _react2.default.createElement('input', { type: 'text', className: 'form-control', onChange: function onChange(event) {
+                  return _this3.setState({ zip: event.target.value });
+                } })
+            )
+          ),
+          _react2.default.createElement(
+            'p',
+            null,
+            _react2.default.createElement(
+              'button',
+              { disabled: this.state.posting, className: 'btn btn-default btn-primary', onClick: this.postToServer },
+              'SHARE MY STORY'
+            )
+          )
+        )
+      );
+    }
+  }, {
+    key: 'renderPageContents',
+    value: function renderPageContents() {
+      if (this.state.donePost) {
+        return this.renderSuccess();
+      } else {
+        return this.renderForm();
+      }
+    }
+  }, {
+    key: 'render',
+    value: function render() {
+      return _react2.default.createElement(
+        'div',
+        null,
+        _react2.default.createElement(
+          'div',
+          { className: 'well' },
+          _react2.default.createElement(
+            'p',
+            null,
+            'We\'d like you to share your positive experiences with the Affordable Care Act, also known as Obamacare. We will compile the responses to provide an alternative story to the one being told by the White House. You can fill out as few or as many fields as you want. However, be aware that it will be easier to verify that your story is true if we know how to get in touch with you. We will not share any information other than your story and the state in which you live.'
+          )
+        ),
+        this.renderPageContents()
+      );
+    }
+  }]);
+
+  return Home;
+}(_react2.default.Component);
+
+exports.default = Home;
 
 /***/ })
 /******/ ]);

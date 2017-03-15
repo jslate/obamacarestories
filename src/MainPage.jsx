@@ -2,135 +2,99 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 import _ from 'lodash';
-import axios from 'axios';
+import Home from './Home.jsx'
+
 
 class MainPage extends React.Component {
 
   constructor(props) {
     super(props);
-    this.state = {};
-    this.handleChange = this.handleChange.bind(this);
-    this.postToServer = this.postToServer.bind(this);
-    this.apiURL = 'https://sgx2yfm8xf.execute-api.us-east-1.amazonaws.com/prod/feelings';
-    this.countries = [ "United States", "Afghanistan", "Aland Islands", "Albania", "Algeria", "American Samoa", "Andorra", "Angola", "Anguilla", "Antarctica", "Antigua and Barbuda", "Argentina", "Armenia", "Aruba", "Australia", "Austria", "Azerbaijan", "Bahamas", "Bahrain", "Bangladesh", "Barbados", "Belarus", "Belgium", "Belize", "Benin", "Bermuda", "Bhutan", "Bolivia", "Bonaire, Saint Eustatius and Saba ", "Bosnia and Herzegovina", "Botswana", "Bouvet Island", "Brazil", "British Indian Ocean Territory", "British Virgin Islands", "Brunei", "Bulgaria", "Burkina Faso", "Burundi", "Cambodia", "Cameroon", "Canada", "Cape Verde", "Cayman Islands", "Central African Republic", "Chad", "Chile", "China", "Christmas Island", "Cocos Islands", "Colombia", "Comoros", "Cook Islands", "Costa Rica", "Croatia", "Cuba", "Curacao", "Cyprus", "Czech Republic", "Democratic Republic of the Congo", "Denmark", "Djibouti", "Dominica", "Dominican Republic", "East Timor", "Ecuador", "Egypt", "El Salvador", "Equatorial Guinea", "Eritrea", "Estonia", "Ethiopia", "Falkland Islands", "Faroe Islands", "Fiji", "Finland", "France", "French Guiana", "French Polynesia", "French Southern Territories", "Gabon", "Gambia", "Georgia", "Germany", "Ghana", "Gibraltar", "Greece", "Greenland", "Grenada", "Guadeloupe", "Guam", "Guatemala", "Guernsey", "Guinea", "Guinea-Bissau", "Guyana", "Haiti", "Heard Island and McDonald Islands", "Honduras", "Hong Kong", "Hungary", "Iceland", "India", "Indonesia", "Iran", "Iraq", "Ireland", "Isle of Man", "Israel", "Italy", "Ivory Coast", "Jamaica", "Japan", "Jersey", "Jordan", "Kazakhstan", "Kenya", "Kiribati", "Kosovo", "Kuwait", "Kyrgyzstan", "Laos", "Latvia", "Lebanon", "Lesotho", "Liberia", "Libya", "Liechtenstein", "Lithuania", "Luxembourg", "Macao", "Macedonia", "Madagascar", "Malawi", "Malaysia", "Maldives", "Mali", "Malta", "Marshall Islands", "Martinique", "Mauritania", "Mauritius", "Mayotte", "Mexico", "Micronesia", "Moldova", "Monaco", "Mongolia", "Montenegro", "Montserrat", "Morocco", "Mozambique", "Myanmar", "Namibia", "Nauru", "Nepal", "Netherlands", "New Caledonia", "New Zealand", "Nicaragua", "Niger", "Nigeria", "Niue", "Norfolk Island", "North Korea", "Northern Mariana Islands", "Norway", "Oman", "Pakistan", "Palau", "Palestinian Territory", "Panama", "Papua New Guinea", "Paraguay", "Peru", "Philippines", "Pitcairn", "Poland", "Portugal", "Puerto Rico", "Qatar", "Republic of the Congo", "Reunion", "Romania", "Russia", "Rwanda", "Saint Barthelemy", "Saint Helena", "Saint Kitts and Nevis", "Saint Lucia", "Saint Martin", "Saint Pierre and Miquelon", "Saint Vincent and the Grenadines", "Samoa", "San Marino", "Sao Tome and Principe", "Saudi Arabia", "Senegal", "Serbia", "Seychelles", "Sierra Leone", "Singapore", "Sint Maarten", "Slovakia", "Slovenia", "Solomon Islands", "Somalia", "South Africa", "South Georgia and the South Sandwich Islands", "South Korea", "South Sudan", "Spain", "Sri Lanka", "Sudan", "Suriname", "Svalbard and Jan Mayen", "Swaziland", "Sweden", "Switzerland", "Syria", "Taiwan", "Tajikistan", "Tanzania", "Thailand", "Togo", "Tokelau", "Tonga", "Trinidad and Tobago", "Tunisia", "Turkey", "Turkmenistan", "Turks and Caicos Islands", "Tuvalu", "U.S. Virgin Islands", "Uganda", "Ukraine", "United Arab Emirates", "United Kingdom", "United States Minor Outlying Islands", "Uruguay", "Uzbekistan", "Vanuatu", "Vatican", "Venezuela", "Vietnam", "Wallis and Futuna", "Western Sahara", "Yemen", "Zambia", "Zimbabwe"];
-    this.states = ['Alabama','Alaska','American Samoa','Arizona','Arkansas','California','Colorado','Connecticut','Delaware','District of Columbia','Federated States of Micronesia','Florida','Georgia','Guam','Hawaii','Idaho','Illinois','Indiana','Iowa','Kansas','Kentucky','Louisiana','Maine','Marshall Islands','Maryland','Massachusetts','Michigan','Minnesota','Mississippi','Missouri','Montana','Nebraska','Nevada','New Hampshire','New Jersey','New Mexico','New York','North Carolina','North Dakota','Northern Mariana Islands','Ohio','Oklahoma','Oregon','Palau','Pennsylvania','Puerto Rico','Rhode Island','South Carolina','South Dakota','Tennessee','Texas','Utah','Vermont','Virgin Island','Virginia','Washington','West Virginia','Wisconsin','Wyoming'];
+    this.state = {page: 'home'};
+    this.getNavClass = this.getNavClass.bind(this);
+    this.renderPageContents = this.renderPageContents.bind(this);
+    this.navTo = this.navTo.bind(this);
   }
 
-  handleChange(type, event) {
-    let obj = {};
-    obj[type] = parseInt(event.target.value);
-    this.setState({variableProperties: _.merge(this.state.variableProperties, obj)});
+  getNavClass() {
+    if (this.state.navOpen) {
+      return 'navbar-collapse';
+    } else {
+      return 'navbar-collapse collapse';
+    }
   }
 
-  handleSelectChange(event) {
-    this.setState({
-      variableProperties: _.find(this.state.items, (item) => item.date == event.target.value).values,
-      selectedItem: parseInt(event.target.value)});
+  renderAbout() {
+    return (<div className="well">
+        <p>The White House has asked people to share their stories about Obamacare with a survey clearly
+        designed to get responses that serve their agenda. You can respond to it if you wish, but if you
+        don't tell the story they want to hear, we expect they will ignore it.</p>
+
+        <p>We decided to provide this site to give people another place to share their stories about Obamacare.
+        We will compile the responses to provide an alternative story to the one being told by The White House.</p>
+
+        <p>Author: Jonathan Slate (<a href="https://twitter.com/jslate">@jslate</a>)</p>
+      </div>);
   }
 
-  postToServer(event) {
+  renderPageContents() {
+    if (this.state.page == 'home') {
+      return (<Home />);
+    } else {
+      return this.renderAbout();
+    }
+  }
+
+  navTo(event, location) {
     event.preventDefault();
-    let _this = this;
-    const params = {
-      Item: {
-        firstName: this.state.firstName,
-        lastName: this.state.lastName,
-        story: this.state.story,
-        email: this.state.email,
-        state: this.state.state,
-        country: this.state.country,
-        zip: this.state.zip,
-        date_plus: Date.now() * 1000 + Math.floor(Math.random() * 1000)
-      },
-      TableName: 'shareYourRealStory'
-    };
-    axios.post(this.apiURL, params).then(function (response) {
-      _this.setState({donePost: true});
-    });
+    this.setState({navOpen: false, page: location});
   }
 
-  renderStateOptions() { return this.states.map((state) => (<option key={state}>{state}</option>)); }
-  renderCountryOptions() { return this.countries.map((country) => (<option key={country}>{country}</option>)); }
+  fbShare(event) {
+    event.preventDefault();
+    window.open("https://www.facebook.com/sharer/sharer.php?u=http://yourrealobamacarestory.life", "pop", "width=600, height=400, scrollbars=no");
+  }
 
   render() {
-    return (<div>
-      <div className="block">
-        <h1>Obamacare: Share Your Real Story</h1>
-        <div className="well">
-          <p>President Trump asked you to share your story with a survey designed to get responses
-          that serve his agenda. You can respond to it if you wish, but if you don't tell the story they want,
-          I expect they will ignore it.</p>
-          <p>Or, you can share your story here. I will compile the responses to provide an alternative story.
-          Unlike with the White House's form, you can fill out as few or as many fields as you want.
-          I will not anything other than your state and story. I might use the other information
-          to get in touch with you if I have questions. I hope you can trust me with your information <em>at least</em> as much as you can trust Donald Trump.</p>
-          <p>-<a href="https://twitter.com/jslate">@jslate</a></p>
-        </div>
-
-        <p>&nbsp;</p>
-
-        <h2>{this.state.donePost ? 'Thank you! Your story has been recorded' : ''}</h2>
-
-        <form>
-          <div className="form-group">
-            <p>
-              <label>
-                SHARE YOUR STORY:<br />
-                <textarea className="form-control" onChange={(event) => this.setState({story: event.target.value})} rows="15" cols="60"/>
-              </label>
-            </p>
-            <p>
-              <label>
-                FIRST NAME:<br />
-                <input type="text" className="form-control" onChange={(event) => this.setState({firstName: event.target.value})} />
-              </label>
-            </p>
-            <p>
-              <label>
-                LAST NAME:<br />
-                <input type="text" className="form-control" onChange={(event) => this.setState({lastName: event.target.value})} />
-              </label>
-            </p>
-            <p>
-              <label>
-                EMAIL:<br />
-                <input type="text" className="form-control" onChange={(event) => this.setState({email: event.target.value})} />
-              </label>
-            </p>
-
-            <p>
-              <label>
-                STATE:<br />
-                <select  className="form-control" onChange={(event) => this.setState({us_state: event.target.value})}>
-                  {this.renderStateOptions()}
-                </select>
-              </label>
-            </p>
-            <p>
-              <label>
-                COUNTRY:<br />
-                <select className="form-control" onChange={(event) => this.setState({country: event.target.value})}>
-                  {this.renderCountryOptions()}
-                </select>
-              </label>
-            </p>
-            <p>
-              <label>
-                ZIP:<br />
-                <input type="text" className="form-control" onChange={(event) => this.setState({zip: event.target.value})} />
-              </label>
-            </p>
-            <p>
-              <button className="btn btn-default btn-primary" onClick={this.postToServer}>SHARE MY STORY</button>
-            </p>
+    return (
+      <div>
+        <nav className="navbar navbar-inverse navbar-fixed-top">
+          <div className="container">
+            <div className="navbar-header">
+              <button type="button"
+                className="navbar-toggle collapsed"
+                data-toggle="collapse"
+                data-target="#navbar"
+                aria-expanded="false"
+                aria-controls="navbar"
+                onClick={() => this.setState({navOpen: !this.state.navOpen})}>
+                <span className="sr-only">Toggle navigation</span>
+                <span className="icon-bar"></span>
+                <span className="icon-bar"></span>
+                <span className="icon-bar"></span>
+              </button>
+              <a className="navbar-brand" href="#" onClick={(event) => this.navTo(event, 'home')}>Obamacare: Share Your Real Story</a>
+            </div>
+            <div id="navbar" className={this.getNavClass()}>
+              <ul className="nav navbar-nav">
+                <li className={this.state.page == 'home' ? 'active' : ''}><a href="#" onClick={(event) => this.navTo(event, 'home')}>Home</a></li>
+                <li className={this.state.page == 'about' ? 'active' : ''}><a href="#" onClick={(event) => this.navTo(event, 'about')}>About</a></li>
+              </ul>
+            </div>
           </div>
-        </form>
-      </div>
-    </div>);
+        </nav>
+        <div className="container">
+          {this.renderPageContents()}
+          <div className="sharing">
+            <a href="#" onClick={this.fbShare}><img src="fb-logo.png" style={{width: 25}}/></a>
+            <a href="https://twitter.com/share" class="twitter-share-button" data-show-count="false">Tweet</a>
+            <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+          </div>
+        </div>
+      </div>);
   }
 }
 
-const componentElement = document.getElementById('container');
+const componentElement = document.getElementById('outer-container');
 if (componentElement) {
   ReactDOM.render(
     <MainPage />,
