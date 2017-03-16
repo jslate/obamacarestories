@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 import _ from 'lodash';
 import Home from './Home.jsx'
+import Stories from './Stories.jsx'
 
 import {
   ShareButtons,
@@ -58,8 +59,10 @@ class MainPage extends React.Component {
   renderPageContents() {
     if (this.state.page == 'home') {
       return (<Home />);
-    } else {
+    } else if (this.state.page == 'about') {
       return this.renderAbout();
+    } else {
+      return (<Stories />);
     }
   }
 
@@ -92,6 +95,7 @@ class MainPage extends React.Component {
               <ul className="nav navbar-nav">
                 <li className={this.state.page == 'home' ? 'active' : ''}><a href="#" onClick={(event) => this.navTo(event, 'home')}>Home</a></li>
                 <li className={this.state.page == 'about' ? 'active' : ''}><a href="#" onClick={(event) => this.navTo(event, 'about')}>About</a></li>
+                <li className={this.state.page == 'stories' ? 'active' : ''}><a href="#" onClick={(event) => this.navTo(event, 'stories')}>Stories</a></li>
               </ul>
             </div>
           </div>
@@ -100,10 +104,10 @@ class MainPage extends React.Component {
           {this.renderPageContents()}
           <div className="sharing">
             <FacebookShareButton url="http://yourrealobamacarestory.life">
-              <FacebookIcon round="true" size="40" />
+              <FacebookIcon round={true} size={40} />
             </FacebookShareButton>
             <TwitterShareButton url="http://yourrealobamacarestory.life" title="Share your real Obamacare story" hashtags={['RealObamaCareStory']}>
-              <TwitterIcon round="true" size="40" />
+              <TwitterIcon round={true} size={40} />
             </TwitterShareButton>
           </div>
         </div>
