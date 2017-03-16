@@ -46,11 +46,20 @@ class MainPage extends React.Component {
   renderAbout() {
     return (<div className="well">
         <p>The White House has asked people to share their stories about Obamacare with a survey clearly
-        designed to get responses that serve their agenda. You can respond to it if you wish, but if you
-        don't tell the story they want to hear, we expect they will ignore it.</p>
+        designed to get responses that serve their agenda. You can take
+        the <a href="https://www.whitehouse.gov/obamacare-share-your-story">White House survey</a> if
+        you wish, and tell them your story, even if it is one they don't want
+        to hear. They will probably ignore you, but it is hard to truly delete information these days,
+        and your submission might become an important part of the historical record. However, we highly
+        recommend that you also save a copy of your story. Just create your story as a text or word processing
+        document, and copy and paste it into the White House form.</p>
 
-        <p>We decided to provide this site to give people another place to share their stories about Obamacare.
-        We will compile the responses to provide an alternative story to the one being told by The White House.</p>
+        <p>We've created this site to provide another place for people to share their
+        stories about Obamacare. So whether or not you choose to complete the White House survey,
+        please consider <a href="#" onClick={(event) => this.navTo(event, 'home')}>submitting your story</a> on
+        this site. We are compiling the responses to provide an alternative narrative to the one being told by
+        The White House. You can read some responses
+        on the <a href="#" onClick={(event) => this.navTo(event, 'stories')}>stories page</a>.</p>
 
         <p>Author: Jonathan Slate (<a href="https://twitter.com/jslate">@jslate</a>)</p>
       </div>);
