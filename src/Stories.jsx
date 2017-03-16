@@ -10,6 +10,12 @@ class Story extends React.Component {
     this.state = {};
     this.renderFullStory = this.renderFullStory.bind(this);
     this.renderSnippet = this.renderSnippet.bind(this);
+    this.readMore = this.readMore.bind(this);
+  }
+
+  readMore(event) {
+    event.preventDefault();
+    this.setState({storyOpen: true});
   }
 
   renderFullStory() {
@@ -19,7 +25,7 @@ class Story extends React.Component {
   renderSnippet() {
     return (<Truncate lines={2} ellipsis={<span>...
       <br />
-      <a href='#' onClick={() => this.setState({storyOpen: true})}>Read more</a></span>}>
+      <a href='#' onClick={this.readMore}>Read more</a></span>}>
         {this.props.text}
     </Truncate>);
   }

@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 import _ from 'lodash';
-import Home from './Home.jsx'
+import Form from './Form.jsx'
 import Stories from './Stories.jsx'
 
 import {
@@ -32,6 +32,7 @@ class MainPage extends React.Component {
     this.state = {page: 'home'};
     this.getNavClass = this.getNavClass.bind(this);
     this.renderPageContents = this.renderPageContents.bind(this);
+    this.renderSharing = this.renderSharing.bind(this);
     this.navTo = this.navTo.bind(this);
   }
 
@@ -67,12 +68,37 @@ class MainPage extends React.Component {
 
   renderPageContents() {
     if (this.state.page == 'home') {
-      return (<Home />);
+      if (this.state.submitted) {
+        return this.renderSuccess();
+      } else {
+        return (<Form onSubmit={() => this.setState({submitted: true})} />);
+      }
     } else if (this.state.page == 'about') {
       return this.renderAbout();
     } else {
       return (<Stories />);
     }
+  }
+
+  renderSuccess() {
+    return (<div className="alert alert-success" role="alert">
+      Thank you! Your story has been recorded. Please consider sharing on social media using the buttons below.
+    </div>);
+  }
+
+  renderSharing() {
+    if (this.state.page == 'home' && !this.state.submitted) { return null; }
+    return (
+      <div className="sharing">
+        <div style={{display: 'inline-block', verticalAlign: 'top', marginRight: '15px'}}><strong>Share on:</strong></div>
+        <FacebookShareButton url="http://yourrealobamacarestory.life">
+          <FacebookIcon round={true} size={40}/>
+        </FacebookShareButton>
+        <TwitterShareButton url="http://yourrealobamacarestory.life" title="Share your real Obamacare story" hashtags={['RealObamaCareStory']}>
+          <TwitterIcon round={true} size={40} />
+        </TwitterShareButton>
+      </div>
+    );
   }
 
   navTo(event, location) {
@@ -111,14 +137,7 @@ class MainPage extends React.Component {
         </nav>
         <div className="container">
           {this.renderPageContents()}
-          <div className="sharing">
-            <FacebookShareButton url="http://yourrealobamacarestory.life">
-              <FacebookIcon round={true} size={40} />
-            </FacebookShareButton>
-            <TwitterShareButton url="http://yourrealobamacarestory.life" title="Share your real Obamacare story" hashtags={['RealObamaCareStory']}>
-              <TwitterIcon round={true} size={40} />
-            </TwitterShareButton>
-          </div>
+          {this.renderSharing()}
         </div>
       </div>);
   }
