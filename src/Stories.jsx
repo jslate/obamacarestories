@@ -49,6 +49,11 @@ class Stories extends React.Component {
     super(props);
     this.stories = [
       {
+        date: 1489962921934,
+        state: 'Pennsylvania',
+        text: "I am currently on Obamacare along with my 2 sons.\nMy situation is unique because I am responsible for an adult daughter 28 with cerebral palsy, an adult son 31 diagnosed with bi-polar and a 21 son in college. Since getting insurance from Obamacare I was able to get treatment for HepC which I contracted from blood transfusion when I delivered my daughter 28. I was able to visit a range of doctors for preventive care including getting colonoscopy, I am in high risk since my mother died at 49 from colon cancer. I am sure I would be in worse health or dead without this insurance \n\nMy son 31 is bi-polar and He is currently being monitored by a doctor and getting adjustments to his medicine. I know without this insurance my son would go back to being hospitalized and the bills will pile up causing more stress"
+      },
+      {
         date: 1489584885298,
         state: 'Massachusetts',
         text: 'I\'ve been sick with Crohn\'s disease since I was 14. When I tried to go to college, I became too sick to continue after only a few weeks. I dropped out, and my doctor recommended a 3 step surgical procedure. The ACA was brand new at the time, and because I was under 26, I didn\'t have to worry about getting kicked from my parents\' health insurance just when I needed it the most, despite the loss of my status as a full-time student. My dad was even able to leave a job he hated between two of my surgeries without fear that his new insurance would drop me. Those surgeries changed my life, and I do not think I would be alive today if I hadn\'t been able to have them. Afterwards, I was able to go back to college and finish my degree. Nowadays I work and hold my own insurance through my employer, but I am still very expensive, and I live in fear of the return of lifetime and annual caps. And if we go back to a world in which I have to maintain continuous coverage in order to avoid discrimination against my preexisting condition, what will happen to me if I ever have another period in which I\'m too sick to work?'
