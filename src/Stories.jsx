@@ -49,6 +49,11 @@ class Stories extends React.Component {
     super(props);
     this.stories = [
       {
+        date: 1490234031439,
+        state: 'California',
+        text: "As someone who has Multiple Sclerosis and relies on the ACA to afford medication, I imagine that many battle with similar chronic illnesses. If I didn't have a subsidized program, I would pay $2,900/month for meds-- $6,000/month if I didn't have private insurance. That's more than my rent and groceries. I fight for those who often don't have a chance to vote as a social worker. I'm sure that there are millions of people who haven't had a chance to vote because they were ill or for many other intersectional reasons, yet would if they had a chance. That's a large number that would lose coverage. Please consider those who haven't been able to stand up for themselves."
+      },
+      {
         date: 1489962921934,
         state: 'Pennsylvania',
         text: "I am currently on Obamacare along with my 2 sons.\nMy situation is unique because I am responsible for an adult daughter 28 with cerebral palsy, an adult son 31 diagnosed with bi-polar and a 21 son in college. Since getting insurance from Obamacare I was able to get treatment for HepC which I contracted from blood transfusion when I delivered my daughter 28. I was able to visit a range of doctors for preventive care including getting colonoscopy, I am in high risk since my mother died at 49 from colon cancer. I am sure I would be in worse health or dead without this insurance \n\nMy son 31 is bi-polar and He is currently being monitored by a doctor and getting adjustments to his medicine. I know without this insurance my son would go back to being hospitalized and the bills will pile up causing more stress"
