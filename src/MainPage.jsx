@@ -136,6 +136,11 @@ class MainPage extends React.Component {
           </div>
         </nav>
         <div className="container">
+          <div className="alert alert-warning" role="alert">
+            <strong>Notice:</strong> Due to the recent demise of Trumpcare I've decided to stop accepting stories on this site. Thank you
+            to the people who submitted their <a href="#" onClick={(event) => this.navTo(event, 'stories')}>stories</a> so far.
+            This fight isn't over, but it is just time to shift focus, at least for a while.
+          </div>
           {this.renderPageContents()}
           {this.renderSharing()}
         </div>

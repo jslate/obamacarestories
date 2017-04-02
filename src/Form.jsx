@@ -7,7 +7,7 @@ class Form extends React.Component {
 
   constructor(props) {
     super(props);
-    this.state = {donePost: false};
+    this.state = {donePost: false, disabled: true};
     this.postToServer = this.postToServer.bind(this);
     this.renderMessage = this.renderMessage.bind(this);
 
@@ -71,32 +71,32 @@ class Form extends React.Component {
           <p>
             <label>
               SHARE YOUR STORY:<br />
-              <textarea className="form-control" onChange={(event) => this.setState({story: event.target.value})} rows="15" cols="60"/>
+              <textarea disabled={this.state.disabled} className="form-control" onChange={(event) => this.setState({story: event.target.value})} rows="15" cols="60"/>
             </label>
           </p>
           <p>
             <label>
               FIRST NAME:<br />
-              <input type="text" className="form-control" onChange={(event) => this.setState({firstName: event.target.value})} />
+              <input disabled={this.state.disabled} type="text" className="form-control" onChange={(event) => this.setState({firstName: event.target.value})} />
             </label>
           </p>
           <p>
             <label>
               LAST NAME:<br />
-              <input type="text" className="form-control" onChange={(event) => this.setState({lastName: event.target.value})} />
+              <input disabled={this.state.disabled} type="text" className="form-control" onChange={(event) => this.setState({lastName: event.target.value})} />
             </label>
           </p>
           <p>
             <label>
               EMAIL:<br />
-              <input type="text" className="form-control" onChange={(event) => this.setState({email: event.target.value})} />
+              <input disabled={this.state.disabled} type="text" className="form-control" onChange={(event) => this.setState({email: event.target.value})} />
             </label>
           </p>
 
           <p>
             <label>
               STATE:<br />
-              <select  className="form-control" onChange={(event) => this.setState({us_state: event.target.value})}>
+              <select  disabled={this.state.disabled} className="form-control" onChange={(event) => this.setState({us_state: event.target.value})}>
                 {this.renderStateOptions()}
               </select>
             </label>
@@ -104,7 +104,7 @@ class Form extends React.Component {
           <p>
             <label>
               COUNTRY:<br />
-              <select className="form-control" onChange={(event) => this.setState({country: event.target.value})}>
+              <select  disabled={this.state.disabled} className="form-control" onChange={(event) => this.setState({country: event.target.value})}>
                 {this.renderCountryOptions()}
               </select>
             </label>
@@ -112,11 +112,11 @@ class Form extends React.Component {
           <p>
             <label>
               ZIP:<br />
-              <input type="text" className="form-control" onChange={(event) => this.setState({zip: event.target.value})} />
+              <input disabled={this.state.disabled} type="text" className="form-control" onChange={(event) => this.setState({zip: event.target.value})} />
             </label>
           </p>
           <p>
-            <button disabled={this.state.posting} className="btn btn-default btn-primary" onClick={this.postToServer}>SHARE MY STORY</button>
+            <button disabled={this.state.posting || this.state.disabled} className="btn btn-default btn-primary" onClick={this.postToServer}>SHARE MY STORY</button>
           </p>
         </div>
       </form>
